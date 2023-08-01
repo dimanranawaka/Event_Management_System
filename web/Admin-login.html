@@ -1,10 +1,47 @@
+
+<!--Admin-Login Page-->
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
+    <br>  <br>  <br>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <h2 style="text-align: center" id="common">Please login using Username and Password</h2>
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
+<br> <br>
+
+
+        <div >
+            <center><h2 id="common"> Admin Login Page </h2></center>
+
+            <br><br>
+
+            <center>
+
+                <form method="post" action="AdminLoginServlet">
+                    Username:<br><br>
+                    <input type="text" id="text" name="AdminUsername" placeholder="Username"><br><p>
+                    Password:<br><br>
+                    <input type="password" id="text" name="AdminPassword" placeholder="Password"><br><br><p>
+                    <input type="submit" id="sub" value="Submit">
+                </form>
+
+            </center>
+
+        </div>
+
 
 </body>
+
+
 </html>
