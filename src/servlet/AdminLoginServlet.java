@@ -57,7 +57,7 @@ public class AdminLoginServlet extends HttpServlet {
         }else{
 
             writer.println("<center><h1>!! Please Enter Valid Username & Password !!</h1></center>");
-            RequestDispatcher rd = req.getRequestDispatcher("Admin-Login.html");
+            RequestDispatcher rd = req.getRequestDispatcher("Admin-login.html");
             rd.include(req,resp); // This will make sure if the adminUserName and adminPassword are wrong client will stay the same page
 
         }
