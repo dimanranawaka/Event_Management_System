@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="eventManage">
+    <output-path>$PROJECT_DIR$/out/artifacts/eventManage</output-path>
+    <root id="archive" name="eventManage.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Event_Management_System" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Event_Management_System/web/Web" />
+    </root>
+  </artifact>
+</component>
