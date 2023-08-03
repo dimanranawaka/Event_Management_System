@@ -1,10 +1,35 @@
+<!--Event Registrar-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html><br>
 <head>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <title>Event Registrar</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 id="common" style="text-align:center">!! Welcome All Participants !!</h1>
 </head>
 <body>
-
+<div>
+    <center>
+        <form method="post" action="eventRegistrar">
+            Enter Event Name:<br><br>
+            <input type="text" id="txt1" name="eName"><br><p></p>
+            Enter Event No:<br><br>
+            <input type="text" id="txt2" name="eNum"><br><p></p>
+            Enter Card No:<br><br>
+            <input type="text" id="txt3" name="cardNum"><br><p></p>
+            Enter Expiry Date:<br><br>
+            <input type="text" id="txt4" name="eDate"><br><p></p>
+            Enter CVV No:<br><br>
+            <input type="password" id="txt5" name="cardCVV"><br><p></p>
+            Enter Card Holder's Name:<br><br>
+            <input type="text" id="text" name="cHoldersName"><br><p></p>
+            <input type="submit" id="sub" value="Proceed Payment">
+        </form>
+    </center>
+</div>
 </body>
 </html>
