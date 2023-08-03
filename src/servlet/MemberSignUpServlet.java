@@ -52,7 +52,7 @@ public class MemberSignUpServlet extends HttpServlet {
 //                writer.println("<center><a href='MemberLogin.html'>Login</a></center>");
 
                 preparedStatement.close();
-                instance.getConnection().close();
+//                instance.getConnection().close();
 //                writer.close();
 
 

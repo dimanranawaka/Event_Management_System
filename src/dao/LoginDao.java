@@ -30,7 +30,7 @@ public class LoginDao {
 
             status = resultSet.next(); // Go to next Position
 
-            connection.close();
+//            connection.close();
 
 
 
