@@ -12,11 +12,9 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-<<<<<<< HEAD
+
 @WebServlet(urlPatterns = "/transactionManager")
-=======
-@WebServlet(urlPatterns = "transactionManager")
->>>>>>> origin/master
+
 public class TransactionManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
