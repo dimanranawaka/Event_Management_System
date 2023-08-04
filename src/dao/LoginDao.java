@@ -1,47 +1,30 @@
 package dao;
 
-import db.DBConnection;
+import dao.DatabaseOperationsDao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDao {
 
-    public static boolean validateLogin(String mUserName,String mPassword){
+    public static boolean validateLogin(String mUserName, String mPassword) {
 
         boolean status = false;
 
         try {
+            DatabaseOperationsDao dbOperations = new DatabaseOperationsDao();
 
-            Connection connection = DBConnection.getInstance().getConnection();
+            String query = "SELECT * FROM members WHERE mUserName=? AND mPassword=?";
 
-            // The Question mark(?) Specifies the line number of members table
-
-            String sql = "SELECT * FROM members WHERE mUserName=? AND mPassword=?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-            preparedStatement.setString(1,mUserName);
-            preparedStatement.setString(2,mPassword);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
+            // Use the retrieveData method from DatabaseOperations
+            ResultSet resultSet = dbOperations.retrieveData(query, mUserName, mPassword);
 
             status = resultSet.next(); // Go to next Position
 
-//            connection.close();
-
-
-
         } catch (SQLException | ClassNotFoundException e) {
-
             e.printStackTrace();
-
         }
 
         return status;
-
     }
-
 }

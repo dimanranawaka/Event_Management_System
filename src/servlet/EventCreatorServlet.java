@@ -1,6 +1,6 @@
 package servlet;
 
-import db.DBConnection;
+import dao.DatabaseOperationsDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,22 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/EventCreator")
-
 public class EventCreatorServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         resp.setContentType("text/html");
 
         PrintWriter writer = resp.getWriter();
 
         // Fetching data from user inputs
-
         String eNumber = req.getParameter("eNumber");
         String eName = req.getParameter("eName");
         String cName = req.getParameter("cName");
@@ -35,37 +31,27 @@ public class EventCreatorServlet extends HttpServlet {
         String eDate = req.getParameter("eDate");
 
         try {
+            DatabaseOperationsDao dbOperations = new DatabaseOperationsDao();
 
-            DBConnection instance = DBConnection.getInstance();
+            String insertQuery = "INSERT INTO eventDetails(eNumber,eName,cName,cNumber,eFee,eVenue,eDate) VALUES (?,?,?,?,?,?,?)";
 
-            String sql = "INSERT INTO eventDetails(eNumber,eName,cName,cNumber,eFee,eVenue,eDate) VALUES (?,?,?,?,?,?,?)";
+            // Use the insertData method from DatabaseOperations
+            boolean insertionResult = dbOperations.insertData(insertQuery, eNumber, eName, cName, cNumber, eFee, eVenue, eDate);
 
-            PreparedStatement preparedStatement = instance.getConnection().prepareStatement(sql);
+            if (insertionResult) {
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("EventCreator.html");
+                requestDispatcher.include(req, resp);
+                writer.println("<center><h1>!! Event Created !!</h1></center>");
+                System.out.println("Event added to Database!");
+            } else {
+                writer.println("<center><h1>!! Event Creation Failed !!</h1></center>");
+            }
 
-            preparedStatement.setString(1,eNumber);
-            preparedStatement.setString(2,eName);
-            preparedStatement.setString(3,cName);
-            preparedStatement.setString(4,cNumber);
-            preparedStatement.setString(5,eFee);
-            preparedStatement.setString(6,eVenue);
-            preparedStatement.setString(7,eDate);
-
-            preparedStatement.executeUpdate();
-
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("EventCreator.html");
-            requestDispatcher.include(req,resp);
-
-            writer.println("<center><h1>!! Event Created !!</h1></center>");
-
-            System.out.println("Event added to Database!");
-
-            preparedStatement.close();
-
-        } catch (SQLException | ClassNotFoundException e) {
-
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
             System.out.println(e);
-
         }
+
         writer.close();
     }
 }
