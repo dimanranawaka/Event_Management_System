@@ -16,8 +16,7 @@ import java.sql.SQLException;
 
 public class EventViewerServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
 
@@ -45,7 +44,7 @@ public class EventViewerServlet extends HttpServlet {
 
             writer.println("<center>");
             writer.println("<table border=1 width=50% height=50%>");
-            writer.println("<tr><th>Event Number</th>th>Event Name</th>th>Coordinator</th>th>Co Contact</th>th>Fee</th>th>Venue</th>th>Date</th>");
+            writer.println("<tr><th>Event Number</th><th>Event Name</th><th>Coordinator</th><th>Co Contact</th><th>Fee</th><th>Venue</th><th>Date</th>");
 
             while (resultSet.next()){
 
@@ -70,6 +69,8 @@ public class EventViewerServlet extends HttpServlet {
 
             e.printStackTrace();
 
+        }finally {
+            writer.close();
         }
     }
 }
