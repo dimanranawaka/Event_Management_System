@@ -49,13 +49,13 @@ public class EventViewerServlet extends HttpServlet {
 
             while (resultSet.next()){
 
-                String eNumber = req.getParameter("eNumber");
-                String eName = req.getParameter("eName");
-                String cName = req.getParameter("cName");
-                String cNumber = req.getParameter("cNumber");
-                String eFee = req.getParameter("eFee");
-                String eVenue = req.getParameter("eVenue");
-                String eDate = req.getParameter("eDate");
+                String eNumber = resultSet.getString("eNumber");
+                String eName = resultSet.getString("eName");
+                String cName = resultSet.getString("cName");
+                String cNumber = resultSet.getString("cNumber");
+                String eFee = resultSet.getString("eFee");
+                String eVenue = resultSet.getString("eVenue");
+                String eDate = resultSet.getString("eDate");
                 writer.println("<tr><td>" +eNumber+"</td><td>"+eName+"</td><td>"+cName+"</td><td>"+cNumber+"</td><td>"+eFee+"</td><td>"+eVenue+"</td><td>"+eDate+"</td></tr>");
 
 
